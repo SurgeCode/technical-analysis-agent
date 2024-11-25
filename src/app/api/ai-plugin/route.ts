@@ -19,7 +19,7 @@ export async function GET() {
     },
     servers: [
       {
-        url: config.url
+        url: config.url,
       },
     ],
     "x-mb": {
@@ -140,7 +140,8 @@ My analysis emphasizes actionable insights based on thorough technical analysis,
       "/api/tools/binance": {
         post: {
           summary: "Get cryptocurrency technical analysis data",
-          description: "Fetches technical indicators based on request body properties, endpoints takes comman separated endpoints and symbol takes the symbol to analyse",
+          description:
+            "Fetches technical indicators based on request body properties, endpoints takes comman separated endpoints and symbol takes the symbol to analyse",
           operationId: "get-crypto-analysis",
           requestBody: {
             required: true,
@@ -151,36 +152,38 @@ My analysis emphasizes actionable insights based on thorough technical analysis,
                   required: ["endpoints", "symbol"],
                   properties: {
                     endpoints: {
-                      type: "string", 
+                      type: "string",
                       description: "Comma-separated list of endpoints to query",
                       example: "ticker/price,depth,trades",
                       enum: [
                         "aggTrades",
                         "avgPrice",
-                        "depth", 
+                        "depth",
                         "exchangeInfo",
                         "klines",
                         "ticker",
                         "ticker/price",
-                        "ticker/bookTicker", 
+                        "ticker/bookTicker",
                         "trades",
-                        "time"
-                      ]
+                        "time",
+                      ],
                     },
                     symbol: {
                       type: "string",
                       pattern: "^[A-Z0-9]+USDT$",
                       example: "BTCUSDT",
-                      description: "The trading pair symbol (e.g., BTCUSDT, ETHUSDT)"
-                    }
-                  }
-                }
-              }
-            }
+                      description:
+                        "The trading pair symbol (e.g., BTCUSDT, ETHUSDT)",
+                    },
+                  },
+                },
+              },
+            },
           },
           responses: {
             "200": {
-              description: "Successful response with data from all requested endpoints",
+              description:
+                "Successful response with data from all requested endpoints",
               content: {
                 "application/json": {
                   schema: {
@@ -193,27 +196,27 @@ My analysis emphasizes actionable insights based on thorough technical analysis,
                           properties: {
                             endpoint: {
                               type: "string",
-                              description: "The endpoint that was queried"
+                              description: "The endpoint that was queried",
                             },
                             symbol: {
-                              type: "string", 
-                              description: "The trading pair symbol"
+                              type: "string",
+                              description: "The trading pair symbol",
                             },
                             data: {
                               type: "object",
-                              description: "The technical analysis data"
+                              description: "The technical analysis data",
                             },
                             description: {
                               type: "string",
-                              description: "Description of the endpoint"
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
+                              description: "Description of the endpoint",
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
             },
             "400": {
               description: "Invalid request parameters",
@@ -223,41 +226,41 @@ My analysis emphasizes actionable insights based on thorough technical analysis,
                     type: "object",
                     properties: {
                       error: {
-                        type: "string"
+                        type: "string",
                       },
                       message: {
-                        type: "string"
-                      }
-                    }
-                  }
-                }
-              }
+                        type: "string",
+                      },
+                    },
+                  },
+                },
+              },
             },
             "500": {
-              description: "Server error", 
+              description: "Server error",
               content: {
                 "application/json": {
                   schema: {
                     type: "object",
                     properties: {
                       error: {
-                        type: "string"
+                        type: "string",
                       },
                       message: {
-                        type: "string"
+                        type: "string",
                       },
                       availableEndpoints: {
-                        type: "object"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+                        type: "object",
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
   };
 
   return NextResponse.json(pluginData);
