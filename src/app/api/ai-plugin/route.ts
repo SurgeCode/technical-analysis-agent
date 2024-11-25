@@ -19,7 +19,7 @@ export async function GET() {
     },
     servers: [
       {
-        url: config.url,
+        url: config.url || DEPLOYMENT_URL,
       },
     ],
     "x-mb": {
