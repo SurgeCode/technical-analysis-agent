@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"next dev\" \"make-agent dev -p 3000\"",
+    "dev": "concurrently \"next dev\" \"make-agent dev -p 3000 --serveo\"",
     "build": "next build && make-agent deploy -u https://agent-next-boilerplate.vercel.app",
     "start": "next start",
     "lint": "next lint"
@@ -12,7 +12,7 @@
     "next": "14.2.15",
     "react": "^18",
     "react-dom": "^18",
-    "vercel-url": "^0.2.1"
+    "vercel-url": "^0.2.4"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -21,7 +21,7 @@
     "concurrently": "^9.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.2.15",
-    "make-agent": "0.0.24",
+    "make-agent": "0.0.25-rc.1",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
