@@ -40,6 +40,9 @@ export async function POST(request: Request) {
         let url = `${BINANCE_API_BASE}/${endpoint}`;
         if (symbol) {
           url += `?symbol=${symbol.toUpperCase()}`;
+          if (endpoint === 'klines') {
+            url += '&interval=1d'
+          }
         }
 
         const response = await fetch(url);
