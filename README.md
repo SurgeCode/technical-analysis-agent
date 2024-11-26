@@ -1,90 +1,103 @@
-# Bitte AI Agent NextJS Template
+# Crypto Technical Analysis Agent
 
-This template provides a starting point for creating AI agents using the Bitte Protocol with Next.js. It includes pre-configured endpoints and tools that demonstrate common agent functionalities.
+A sophisticated cryptocurrency technical analysis AI assistant that provides comprehensive market analysis and trading insights using advanced technical indicators and pattern recognition. The agent leverages Binance's public market data API to provide real-time analysis.
+
+## Overview
+
+This BitteProtocol agent serves as an expert cryptocurrency technical analyst, offering in-depth market analysis through a combination of technical indicators, pattern recognition, and multi-timeframe analysis. It integrates with Binance's market data endpoints to fetch real-time cryptocurrency data.
 
 ## Features
 
-- 🤖 Pre-configured AI agent setup
-- 🛠️ Built-in tools and endpoints:
-  - Blockchain information retrieval
-  - NEAR transaction generation
-  - Reddit frontpage fetching
-  - Twitter share intent generation
-  - Coin flip functionality
-- ⚡ Next.js 14 with App Router
-- 🎨 Tailwind CSS for styling
-- 📝 TypeScript support
-- 🔄 Hot reload development environment
+- Deep Market Structure Analysis
+- Volume Profile and Order Flow Analysis
+- Advanced Technical Indicator Analysis
+- Market Psychology and Sentiment Evaluation
+- Risk Management and Position Sizing
+- Comprehensive Trading Plan Generation
+- Real-time Binance Market Data Integration
 
-## Quick Start
+## Binance API Integration
 
-1. Clone this repository
-2. Install dependencies:
+The agent utilizes Binance's public REST API endpoints to fetch market data. No API key is required for these public endpoints. The integration includes:
 
-```bash
-pnpm install
-```
+- Real-time market data access
+- Support for all major cryptocurrency pairs
+- Standard Binance API rate limits apply
+- Automatic data normalization and processing
 
-3. Start the development server:
+### Binance Endpoints Used
 
-```bash
-pnpm run dev
-```
-
-This will:
-- Start your Next.js application
-- Launch make-agent 
-- Prompt you to sign a message in Bitte wallet to create an API key
-- Launch your agent in the Bitte playground
-- Allow you to freely edit and develop your code in the playground environment
+| Endpoint | Description | Data Provided |
+|----------|-------------|---------------|
+| `/api/v3/klines` | Candlestick data | OHLCV data for technical analysis |
+| `/api/v3/depth` | Order book | Market depth and liquidity |
+| `/api/v3/trades` | Recent trades | Latest market transactions |
+| `/api/v3/ticker/24hr` | 24h statistics | Price and volume statistics |
+| `/api/v3/aggTrades` | Aggregated trades | Consolidated trade data |
 
 
-## Available Tools
+## API Endpoints
 
-The template includes several pre-built tools:
+The agent exposes a REST API endpoint:
 
-### 1. Blockchain Information
-- Endpoint: `/api/tools/get-blockchains`
-- Returns a randomized list of blockchain networks
-
-### 2. NEAR Transaction Generator
-- Endpoint: `/api/tools/create-transaction`
-- Creates NEAR transaction payloads for token transfers
-
-### 3. Reddit Frontpage
-- Endpoint: `/api/tools/reddit`
-- Fetches current posts from Reddit's frontpage
-
-### 4. Twitter Share
-- Endpoint: `/api/tools/twitter`
-- Generates Twitter share intent URLs
-
-### 5. Coin Flip
-- Endpoint: `/api/tools/coinflip`
-- Simple random coin flip generator
-
-## AI Plugin Configuration
-
-The template includes a pre-configured AI plugin manifest at `/.well-known/ai-plugin.json`. You can customize the assistant's behavior by modifying the configuration in:
+POST /api/tools/binance
 
 
-## Deployment
+### Request Parameters
 
-1. Push your code to GitHub
-2. Deploy to Vercel or your preferred hosting platform
-3. Add your `BITTE_KEY` to the environment variables
-4. The `make-agent deploy` command will automatically run during build
+| Parameter  | Type   | Description                          | Example                    |
+|-----------|--------|--------------------------------------|----------------------------|
+| endpoints | string | Comma-separated list of data points  | `klines,ticker,depth,trades` |
+| symbol    | string | Trading pair (USDT pairs only)       | `BTCUSDT`                 |
 
-## Learn More
+### Available Endpoints
 
-- [Bitte Protocol Documentation](https://docs.bitte.ai)
-- [Next.js Documentation](https://nextjs.org/docs)
-- [OpenAPI Specification](https://swagger.io/specification/)
+- `klines`: Candlestick data for pattern recognition
+- `ticker`: 24h statistics for momentum analysis
+- `depth`: Order book analysis
+- `trades`: Recent trade flow analysis
+- `aggTrades`: Aggregated trade data
+- `avgPrice`: Current average price
+- `ticker/price`: Latest price data
+- `ticker/bookTicker`: Best bid/ask analysis
+- `exchangeInfo`: Trading rules and info
+- `time`: Server time sync
 
-## Contributing
+### Recommended Endpoint Combination
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+For optimal analysis, use: 
 
-## License
+"endpoints": "klines,ticker,depth,trades,aggTrades"
 
-MIT License
+## Supported Trading Pairs
+
+The agent automatically converts common cryptocurrency names to USDT trading pairs:
+
+| Input Format | Trading Pair |
+|--------------|-------------|
+| "Bitcoin" or "BTC" | BTCUSDT |
+| "Ethereum" or "ETH" | ETHUSDT |
+| "Binance Coin" or "BNB" | BNBUSDT |
+| "Cardano" or "ADA" | ADAUSDT |
+| "XRP" | XRPUSDT |
+| "Solana" or "SOL" | SOLUSDT |
+| And many more... |
+
+## Analysis Output
+
+The agent provides comprehensive analysis including:
+
+1. Multi-timeframe market structure analysis
+2. Technical indicator readings and interpretations
+3. Volume profile and order flow insights
+4. Trading opportunities with specific triggers
+5. Risk management guidelines
+6. Alternative scenarios and invalidation levels
+
+## Error Handling
+
+The API includes proper error handling with specific status codes:
+
+- `200`: Successful response with analysis data
+- `400`: Invalid request parameters
+- `500`: Server error with available endpoints
