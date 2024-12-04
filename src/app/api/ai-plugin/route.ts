@@ -133,7 +133,9 @@ I will provide a detailed analysis report including:
 - Alternative scenarios and key invalidation levels
 
 My analysis emphasizes actionable insights based on thorough technical analysis, helping traders make well-informed decisions with proper risk management.`,
-        tools: [],
+        tools: [{
+          "type": "render-chart"
+        }],
       },
     },
     paths: {
