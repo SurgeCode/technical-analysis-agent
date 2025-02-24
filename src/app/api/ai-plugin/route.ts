@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { DEPLOYMENT_URL } from "vercel-url";
 
- function GET() {
+export async function GET() {
   const pluginData = {
     openapi: "3.0.0",
     info: {
